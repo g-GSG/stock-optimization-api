@@ -1,9 +1,10 @@
 from flask import Flask, request
 from optimization import optimize
-
+from flask_cors import CORS
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
+cors = CORS(application)
 
 # Root page
 @application.route("/")
