@@ -1,5 +1,3 @@
-# Example of use of the Pulp libray for 15-382
-# Modeling and solution of a simple knapsack problem
 # Giulia Chiucchi e Gustavo Gomes
 
 from pulp import *
@@ -19,10 +17,10 @@ def optimize(items, maxVolume):
     # Initialize the decision variables
     x = LpVariable.dicts('Quantidade de produtos', range(itemCount), lowBound = 0, cat=LpInteger)
 
-    # Adicionar funcao objetivo
+    # Add objective function
     model += lpSum([ x[i] * items[i]["lucro"] for i in range(itemCount) ]) # "Objetivo: Maximizar lucro"
 
-    # Adicionar restricoes ao modelo
+    # Add constraints to model
     for i in range(itemCount):
         model += x[i] <= items[i]["quantidade"] # "Quantidade de produtos <= quantidade disponível"
     
